@@ -2,10 +2,10 @@ import os
 import configparser
 import ttkbootstrap as ttk
 from tkinter import messagebox, Listbox
-from ttkbootstrap import Scrollbar
+from ttkbootstrap import Scrollbar, Progressbar
 import logging
 from qobuz_dl.core import QobuzDL
-
+import threading
 
 class CredentialWindow:
     def __init__(self, parent, app_instance):
@@ -187,6 +187,9 @@ class QobuzDLApp:
                                                takefocus=1, command=self.download_selected)
         self.download_button.grid(row=6, columnspan=2, padx=10, pady=10)
 
+        self.progressbar = Progressbar(self.root, mode='determinate')
+        self.progressbar.grid(row=7, columnspan=2, padx=10, pady=10)
+
         # Create menu
         self.create_menu()
 
@@ -235,6 +238,15 @@ class QobuzDLApp:
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
+    def update_progressbar_complete(self):
+        self.progressbar.stop()
+        self.progressbar['value'] = 100
+
+    def remove_downloaded_items(self, downloaded_items):
+        remaining_items = [item for item in self.search_results if item not in downloaded_items]
+        self.search_results = remaining_items
+        self.update_results_listbox(remaining_items)
+
     def download_selected(self):
         selected_indices = self.results_listbox.curselection()
         if not selected_indices:
@@ -247,14 +259,28 @@ class QobuzDLApp:
         selected_items = [self.search_results[i] for i in selected_indices]
         selected_urls = [item['url'] for item in selected_items]
 
-        messagebox.showinfo("Downloading", "Downloading...")
+        self.progressbar.start()
 
+        # Démarre le téléchargement dans un thread séparé
+        threading.Thread(target=self.download_thread, args=(selected_items, selected_urls)).start()
+
+    def update_results_listbox(self, items):
+        self.results_listbox.delete(0, "end")
+        for item in items:
+            self.results_listbox.insert("end", item['text'])
+
+    def download_thread(self, selected_items, selected_urls):
         try:
+            downloaded_items = []
             for item, url in zip(selected_items, selected_urls):
                 self.qobuz.download_list_of_urls([url])
-                messagebox.showinfo("Download Complete", f"Download complete : {item['text']}")
+                downloaded_items.append(item)
         except Exception as e:
             messagebox.showerror("Error", str(e))
+        finally:
+            self.update_progressbar_complete()
+            self.remove_downloaded_items(downloaded_items)
+            messagebox.showinfo("Download Complete", f"Download complete : {item['text']}")
 
 
 # Quality options mapping
