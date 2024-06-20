@@ -7,7 +7,6 @@
     <list default="true" id="3a629eab-6226-4e08-bd53-d9eb99528ca6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qobuz_dl/config.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdlttk.py" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/qdlttk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,7 @@
     "Python.qdlttk.executor": "Run",
     "Python.qdlttk2.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Windows/Documents/GitHub/qdlg"
   }
