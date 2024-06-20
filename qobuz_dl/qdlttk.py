@@ -91,8 +91,6 @@ class QobuzDLApp:
 
     def load_credentials(self):
         self.credentials_file = "config.ini"
-        self.email = ""
-        self.password = ""
 
         config = configparser.ConfigParser()
 
@@ -117,6 +115,7 @@ class QobuzDLApp:
         self.credential_window = ttk.Window(self.root)
         CredentialWindow(self.credential_window, self)
 
+
     def uptodate_credentials(self):
         url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/config.ini"
         directory = getcwd()
@@ -125,6 +124,8 @@ class QobuzDLApp:
 
         f = open(filename, 'wb')
         f.write(r.content)
+
+
     def create_widgets(self):
 
         # Search type selection
