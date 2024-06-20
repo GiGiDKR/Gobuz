@@ -6,6 +6,10 @@ from ttkbootstrap import Scrollbar, Progressbar
 import logging
 from qobuz_dl.core import QobuzDL
 import threading
+import hashlib
+import requests
+from os import getcwd
+
 
 class CredentialWindow:
     def __init__(self, parent, app_instance):
@@ -32,9 +36,9 @@ class CredentialWindow:
 
         # Save credentials to config file
         config = configparser.ConfigParser()
-        config["Credentials"] = {"Email": email, "Password": password}
+        config["Credentials"] = {"Email": email, "Password": hashlib.md5(password.encode("utf-8")).hexdigest()}
 
-        with open("credentials.conf", "w") as configfile:
+        with open("config.ini", "w") as configfile:
             config.write(configfile)
 
         messagebox.showinfo("Credentials Saved", "Credentials have been saved successfully.")
@@ -86,7 +90,7 @@ class QobuzDLApp:
         self.create_widgets()
 
     def load_credentials(self):
-        self.credentials_file = "credentials.conf"
+        self.credentials_file = "config.ini"
         self.email = ""
         self.password = ""
 
@@ -100,7 +104,7 @@ class QobuzDLApp:
 
     def save_credentials(self):
         config = configparser.ConfigParser()
-        config["Credentials"] = {"Email": self.email, "Password": self.password}
+        config["Credentials"] = {"Email": self.email, "Password": hashlib.md5(self.password.encode("utf-8")).hexdigest()}
 
         with open(self.credentials_file, "w") as configfile:
             config.write(configfile)
@@ -113,6 +117,14 @@ class QobuzDLApp:
         self.credential_window = ttk.Window(self.root)
         CredentialWindow(self.credential_window, self)
 
+    def uptodate_credentials(self):
+        url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/config.ini"
+        directory = getcwd()
+        filename = os.path.join(getcwd(), 'config.ini')
+        r = requests.get(url)
+
+        f = open(filename, 'wb')
+        f.write(r.content)
     def create_widgets(self):
 
         # Search type selection
@@ -199,6 +211,7 @@ class QobuzDLApp:
 
         file_menu = ttk.Menu(menu_bar, tearoff=0)
         file_menu.add_command(label="Reset Credentials", command=self.reset_credentials)
+        file_menu.add_command(label="Up-to-date Credentials", command=self.uptodate_credentials)
         file_menu.add_command(label="Options", command=self.show_options)
         file_menu.add_separator()
         file_menu.add_command(label="Quitter", command=self.quit_application)
