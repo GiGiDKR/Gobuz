@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a629eab-6226-4e08-bd53-d9eb99528ca6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/qobuz_dl/en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qobuz_dl/fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/fr.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +50,7 @@
     "Python.logger.executor": "Run",
     "Python.login.executor": "Run",
     "Python.qdl-gui-copilot.executor": "Run",
+    "Python.qdl-gui.bak.executor": "Run",
     "Python.qdl-gui.executor": "Run",
     "Python.qdl.executor": "Run",
     "Python.qdlttk.executor": "Run",

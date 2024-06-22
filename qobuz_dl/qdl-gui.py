@@ -14,8 +14,8 @@ import hashlib
 import sys
 from datetime import datetime
 import json
-
 from qobuz_dl.core import QobuzDL
+from ttkbootstrap.toast import ToastNotification
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -194,7 +194,6 @@ class QobuzDLApp:
             config.write(configfile)
 
     def create_widgets(self):
-
         self.search_type_label = ttk.Label(self.root, text="Search Type :")
         self.search_type_label.grid(row=0, column=0, padx=10, pady=10)
         self.search_type_combobox = ttk.Combobox(self.root, style='dark.TCombobox',
@@ -252,7 +251,7 @@ class QobuzDLApp:
         self.results_listbox = ScrolledFrame(self.root, autohide=True)
         self.results_listbox.grid(row=5, columnspan=2, padx=10, pady=10)
 
-        self.download_button = ttk.Checkbutton(self.root, text="Download Selected", bootstyle="success-toolbutton",
+        self.download_button = ttk.Checkbutton(self.root, text="Download", bootstyle="success-toolbutton",
                                                takefocus=1, command=self.download_selected)
 
         self.download_button.grid(row=6, columnspan=2, padx=10, pady=10)
@@ -276,7 +275,7 @@ class QobuzDLApp:
         self.menu_bar = ttk.Menu(self.root)
         self.root.config(menu=self.menu_bar)
         self.update_menu()
-S
+
         theme_menu = ttk.Menu(self.menu_bar, tearoff=0)
         for theme in style.theme_names():
             theme_menu.add_command(label=theme, command=lambda t=theme: self.change_theme(t))
@@ -375,7 +374,14 @@ S
             for item, url in zip(selected_items, selected_urls):
                 self.qobuz.download_list_of_urls([url])
                 downloaded_items.append(item)
-                messagebox.showinfo("Download Complete", f"Download complete : {item['text']}")
+                toast = ToastNotification(
+                    title="Download Complete",
+                    message=f"Download complete : {item['text']}",
+                    duration=5000,
+                    position=(500, 100, 's')
+                )
+                toast.show_toast()
+                #messagebox.showinfo("Download Complete", f"Download complete : {item['text']}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
         finally:
@@ -393,6 +399,7 @@ Qualities = {
 if __name__ == "__main__":
     style = Style()
     root = style.master
+    root.geometry("330x590")
     results = [...]
     app_instance = QobuzDLApp(root, results, resolve_path)
     #app = QobuzDLApp(root, results, resolve_path)
