@@ -5,37 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a629eab-6226-4e08-bd53-d9eb99528ca6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/qobuz_dl/.config/config.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qobuz_dl/qdl-gui.bak.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qobuz_dl/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qobuz_dl/fr.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/Analysis-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/COLLECT-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/EXE-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/PKG-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/PYZ-00.pyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/PYZ-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/Tree-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/Tree-01.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/Tree-02.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/qobuz-dl-gui.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/qobuz-dl-gui.pkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/warn-gui.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/gui/xref-gui.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - 6 du mat (2023) [16B-44.1kHz]/01. 6 du mat.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - 6 du mat (2023) [16B-44.1kHz]/cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Lettre à la République (2012) [16B-44.1kHz]/01. Lettre à la République.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Lettre à la République (2012) [16B-44.1kHz]/cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/.04.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/01. Le retour du rap français.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/02. Réel.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/03. Je représente.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/04. Yeah.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/Qobuz Downloads/Kery James - Réel (2009) [16B-44.1kHz]/cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdlttk2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

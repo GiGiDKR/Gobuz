@@ -13,6 +13,7 @@ import requests
 import hashlib
 import sys
 from datetime import datetime
+import json
 
 from qobuz_dl.core import QobuzDL
 
@@ -35,11 +36,11 @@ def resolve_path(file_name):
     return resolved_path
 
 
-class OptionsWindow:
+class SettingsWindow:
     def __init__(self, parent, app_instance):
         self.parent = parent
         self.app_instance = app_instance
-        self.parent.title("Options")
+        self.parent.title("Settings")
 
         self.email_label = ttk.Label(parent, text="Email :")
         self.email_label.grid(row=0, column=0, padx=10, pady=10)
@@ -57,10 +58,10 @@ class OptionsWindow:
         #self.limit_spinbox.set(app_instance.limit)
         #self.limit_spinbox.grid(row=2, column=1, padx=10, pady=10)
 
-        self.submit_button = ttk.Button(parent, text="Save", command=self.save_options)
+        self.submit_button = ttk.Button(parent, text="Save", command=self.save_settings)
         self.submit_button.grid(row=3, columnspan=2, padx=10, pady=10)
 
-    def save_options(self):
+    def save_settings(self):
         email = self.email_entry.get()
         password = self.password_entry.get()
 
@@ -78,12 +79,12 @@ class OptionsWindow:
         with open(self.app_instance.config_path, 'w') as configfile:
             config.write(configfile)
 
-        messagebox.showinfo("Options Saved", "Options have been saved successfully.")
+        messagebox.showinfo("Settings Saved", "Settings have been saved successfully.")
         self.parent.destroy()
 
 
 def update_credentials(resolved_path):
-    url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/config.ini"
+    url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/.config/config.ini"
     filename = resolved_path("config.ini")
     r = requests.get(url)
     f = open(filename, 'wb')
@@ -91,12 +92,27 @@ def update_credentials(resolved_path):
     #messagebox.showinfo("Credentials", "Up-to-date Qobuz credentials downloded")
 
 
+def load_translation(language):
+    with open(f"{language}.json", 'r', encoding='utf-8') as f:
+        translations = json.load(f)
+    return translations
+
+
+def translate(text, translations):
+    return translations.get(text, text)
+
+
+def update_widget_text(widget, text):
+    widget.config(text=text)
+
+
 class QobuzDLApp:
     def __init__(self, root, results, resolved_path):
         self.root = root
         self.results = results
         self.root.title("Qobuz Downloader")
-
+        self.widgets_to_update = []
+        self.translations = load_translation('en')
         self.qobuz = QobuzDL()
 
         self.limit = 20
@@ -126,7 +142,7 @@ class QobuzDLApp:
         self.root.geometry(f'+{xpos}+{ypos}')
 
     def user_update_credentials(self, resolved_path):
-        url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/config.ini"
+        url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/.config/config.ini"
         filename = resolved_path("config.ini")
         r = requests.get(url)
         f = open(filename, 'wb')
@@ -185,7 +201,7 @@ class QobuzDLApp:
                                                  values=["album", "track", "artist", "playlist"])
         self.search_type_combobox.grid(row=0, column=1, padx=10, pady=10)
         self.search_type_combobox.current(0)  # Default to "album"
-        ToolTip(self.search_type_combobox, text="Download albums, tracks, artists, playlists and labels",
+        ToolTip(self.search_type_combobox, text="Search albums, tracks, artists, playlists and labels",
                                                 bootstyle="info")
 
         self.search_query_label = ttk.Label(self.root, text="Search :")
@@ -231,7 +247,7 @@ class QobuzDLApp:
         self.quality_combobox = ttk.Combobox(self.root, style='dark.TCombobox', values=list(Qualities.values()))
         self.quality_combobox.grid(row=2, column=1, padx=10, pady=10)
         self.quality_combobox.current(1)  # Default to "6 - 16 bit, 44.1kHz"
-        ToolTip(self.quality_combobox, text="Select audio quality for download", bootstyle="warning")
+        ToolTip(self.quality_combobox, text="Select max audio quality for download", bootstyle="warning")
 
         self.results_listbox = ScrolledFrame(self.root, autohide=True)
         self.results_listbox.grid(row=5, columnspan=2, padx=10, pady=10)
@@ -257,20 +273,45 @@ class QobuzDLApp:
         self.create_menu()
 
     def create_menu(self):
-        menu_bar = ttk.Menu(self.root)
-        self.root.config(menu=menu_bar)
-        file_menu = ttk.Menu(menu_bar, tearoff=0)
-        #file_menu.add_command(label="Reset Credentials", command=self.load_credentials(resolve_path))
-        file_menu.add_command(label="Update Credentials", command=self.user_update_credentials(resolve_path))
-        file_menu.add_separator()
-        file_menu.add_command(label="Options", command=self.show_options)
-        file_menu.add_separator()
-        file_menu.add_command(label="Exit", command=self.quit_application)
-        menu_bar.add_cascade(label="File", menu=file_menu)
-        theme_menu = ttk.Menu(menu_bar, tearoff=0)
+        self.menu_bar = ttk.Menu(self.root)
+        self.root.config(menu=self.menu_bar)
+        self.update_menu()
+S
+        theme_menu = ttk.Menu(self.menu_bar, tearoff=0)
         for theme in style.theme_names():
             theme_menu.add_command(label=theme, command=lambda t=theme: self.change_theme(t))
-        menu_bar.add_cascade(label="Themes", menu=theme_menu)
+        self.menu_bar.add_cascade(label="Themes", menu=theme_menu)
+
+        language_menu = ttk.Menu(self.menu_bar, tearoff=0)
+        language_menu.add_command(label="English", command=lambda: self.update_all_widgets('en'))
+        language_menu.add_command(label="French", command=lambda: self.update_all_widgets('fr'))
+        # Ajoutez les commandes de menu à widgets_to_update
+
+        self.menu_bar.add_cascade(label="Language", menu=language_menu)
+
+        self.widgets_to_update = [(self.download_button, "Download Selected")]
+
+    def update_menu(self):
+        # Supprimez tous les menus existants
+        for menu in self.menu_bar.winfo_children():
+            menu.destroy()
+
+        # Créez un nouveau menu avec le texte traduit
+        file_menu = ttk.Menu(self.menu_bar, tearoff=0)
+        file_menu.add_command(label=translate("Update Credentials", self.translations),
+                              command=self.user_update_credentials(resolve_path))
+        file_menu.add_separator()
+        file_menu.add_command(label=translate("Settings", self.translations), command=self.show_settings)
+        file_menu.add_separator()
+        file_menu.add_command(label=translate("Exit", self.translations), command=self.quit_application)
+        self.menu_bar.add_cascade(label=translate("File", self.translations), menu=file_menu)
+
+    def update_all_widgets(self, language):
+        self.translations = load_translation(language)
+        for widget, text in self.widgets_to_update:
+            translated_text = translate(text, self.translations)
+            update_widget_text(widget, translated_text)
+        self.create_menu()  # Mettez à jour le menu après avoir mis à jour les traductions
 
     def quit_application(self):
         self.root.quit()
@@ -279,9 +320,9 @@ class QobuzDLApp:
         style.theme_use(theme_name)
         self.save_user_preferences(theme_name)
 
-    def show_options(self):
-        self.options_window = ttk.Toplevel(self.root)
-        OptionsWindow(self.options_window, self)
+    def show_settings(self):
+        self.settings_window = ttk.Toplevel(self.root)
+        SettingsWindow(self.settings_window, self)
 
     def start_search(self):
         #self.load_credentials(resolve_path)
