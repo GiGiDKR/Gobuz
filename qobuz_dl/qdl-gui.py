@@ -1,8 +1,8 @@
 import os
 import configparser
 import ttkbootstrap as ttk
-from tkinter import messagebox, Listbox
 from ttkbootstrap import Scrollbar, Progressbar
+from ttkbootstrap.dialogs import MessageDialog
 from ttkbootstrap.scrolled import ScrolledFrame
 from ttkbootstrap.constants import *
 from ttkbootstrap.tooltip import ToolTip
@@ -168,7 +168,7 @@ class QobuzDLApp:
         expirationdate = datetime.strptime(self.expiration_date, "%d/%m/%Y")
         dateactual = datetime.now()
         difference = expirationdate - dateactual
-        date_label_text = f"{difference.days} days before expiration"
+        date_label_text = f"Expire : {difference.days}"
         self.date_label.config(text=date_label_text)
 
     def load_user_preferences(self):
@@ -200,14 +200,15 @@ class QobuzDLApp:
                                                  values=["album", "track", "artist", "playlist"])
         self.search_type_combobox.grid(row=0, column=1, padx=10, pady=10)
         self.search_type_combobox.current(0)  # Default to "album"
-        ToolTip(self.search_type_combobox, text="Search albums, tracks, artists, playlists and labels",
-                                                bootstyle="info")
+        self.search_type_tooltip = ToolTip(self.search_type_combobox,
+                                           text="Search albums, tracks, artists and playlists",
+                                           bootstyle="info")
 
         self.search_query_label = ttk.Label(self.root, text="Search :")
         self.search_query_label.grid(row=1, column=0, padx=10, pady=10)
         self.search_query_entry = ttk.Entry(self.root, style='dark.TEntry')
         self.search_query_entry.grid(row=1, column=1, padx=10, pady=10)
-        ToolTip(self.search_query_entry, text="Enter your search", bootstyle="info")
+        self.search_query_tooltip = ToolTip(self.search_query_entry, text="Enter your search", bootstyle="info")
 
         current_value = ttk.IntVar(value=20)
 
@@ -218,8 +219,8 @@ class QobuzDLApp:
             value_label.configure(text=get_current_value())
             self.limit = current_value.get()
 
-        limit_label = ttk.Label(text='Limit : ')
-        limit_label.grid(row=3, columnspan=1, padx=10, pady=10)
+        self.limit_label = ttk.Label(text='Limit : ')
+        self.limit_label.grid(row=3, columnspan=1, padx=10, pady=10)
 
         self.slider = ttk.Scale(
             from_=1,
@@ -230,7 +231,7 @@ class QobuzDLApp:
             command=slider_changed
         )
         self.slider.grid(row=3, columnspan=2, padx=10, pady=10)
-        ToolTip(self.slider, text="Limit of search results (1>100)", bootstyle="info")
+        self.slider_tooltip = ToolTip(self.slider, text="Limit of search results", bootstyle="info")
 
         value_label = ttk.Label(
             text=get_current_value()
@@ -246,8 +247,8 @@ class QobuzDLApp:
         self.quality_combobox = ttk.Combobox(self.root, style='dark.TCombobox', values=list(Qualities.values()))
         self.quality_combobox.grid(row=2, column=1, padx=10, pady=10)
         self.quality_combobox.current(1)  # Default to "6 - 16 bit, 44.1kHz"
-        ToolTip(self.quality_combobox, text="Select max audio quality for download", bootstyle="warning")
-
+        self.quality_tooltip = ToolTip(self.quality_combobox, text="Max audio quality for downloads",
+                                       bootstyle="warning")
         self.results_listbox = ScrolledFrame(self.root, autohide=True)
         self.results_listbox.grid(row=5, columnspan=2, padx=10, pady=10)
 
@@ -284,18 +285,24 @@ class QobuzDLApp:
         language_menu = ttk.Menu(self.menu_bar, tearoff=0)
         language_menu.add_command(label="English", command=lambda: self.update_all_widgets('en'))
         language_menu.add_command(label="French", command=lambda: self.update_all_widgets('fr'))
-        # Ajoutez les commandes de menu à widgets_to_update
 
         self.menu_bar.add_cascade(label="Language", menu=language_menu)
 
-        self.widgets_to_update = [(self.download_button, "Download Selected")]
-
+        self.widgets_to_update.append((self.search_type_label, "Search Type :"))
+        self.widgets_to_update.append((self.search_type_tooltip, "Search albums, tracks, artists and playlists"))
+        self.widgets_to_update.append((self.search_query_label, "Search :"))
+        self.widgets_to_update.append((self.search_query_tooltip, "Enter your search"))
+        self.widgets_to_update.append((self.limit_label, "Limit :"))
+        self.widgets_to_update.append((self.slider_tooltip, "Limit of search results"))
+        self.widgets_to_update.append((self.search_button, "Search"))
+        self.widgets_to_update.append((self.quality_tooltip, "Max audio quality for downloads"))
+        self.widgets_to_update.append((self.quality_label, "Quality :"))
+        self.widgets_to_update.append((self.download_button, "Download Selected"))
+        
     def update_menu(self):
-        # Supprimez tous les menus existants
         for menu in self.menu_bar.winfo_children():
             menu.destroy()
 
-        # Créez un nouveau menu avec le texte traduit
         file_menu = ttk.Menu(self.menu_bar, tearoff=0)
         file_menu.add_command(label=translate("Update Credentials", self.translations),
                               command=self.user_update_credentials(resolve_path))
@@ -309,8 +316,11 @@ class QobuzDLApp:
         self.translations = load_translation(language)
         for widget, text in self.widgets_to_update:
             translated_text = translate(text, self.translations)
-            update_widget_text(widget, translated_text)
-        self.create_menu()  # Mettez à jour le menu après avoir mis à jour les traductions
+            if isinstance(widget, ToolTip):
+                widget.text = translated_text
+            else:
+                update_widget_text(widget, translated_text)
+        self.create_menu()
 
     def quit_application(self):
         self.root.quit()
@@ -329,7 +339,9 @@ class QobuzDLApp:
         query = self.search_query_entry.get()
 
         if not query:
-            messagebox.showerror("Input Error", "Please enter a search query.")
+            translated_text = translate("Please enter a search query", self.translations)
+            md_query = MessageDialog(message=translated_text)
+            md_query.show()
             return
 
         try:
@@ -343,7 +355,9 @@ class QobuzDLApp:
                                     text=f"{result['text']}").pack(anchor=W)
                 self.search_results = results
             else:
-                messagebox.showinfo("No Results", "No results found for the given query.")
+                translated_text = translate("No results found for the given query", self.translations)
+                md_results = MessageDialog(message=translated_text)
+                md_results.show()
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
@@ -355,7 +369,9 @@ class QobuzDLApp:
         selected_indices = [index for index, child in enumerate(self.results_listbox.winfo_children())
                             if child.instate(['selected'])]
         if not selected_indices:
-            messagebox.showwarning("Selection Error", "Please select at least one item to download.")
+            translated_text = translate("Please select at least one item to download", self.translations)
+            md_download = MessageDialog(message=translated_text)
+            md_download.show()
             return
 
         quality = self.quality_combobox.current() + 5
