@@ -79,7 +79,7 @@ class SettingsWindow:
         with open(self.app_instance.config_path, 'w') as configfile:
             config.write(configfile)
 
-        messagebox.showinfo("Settings Saved", "Settings have been saved successfully.")
+        #messagebox.showinfo("Settings Saved", "Settings have been saved successfully.")
         self.parent.destroy()
 
 
@@ -93,7 +93,9 @@ def update_credentials(resolved_path):
 
 
 def load_translation(language):
-    with open(f"{language}.json", 'r', encoding='utf-8') as f:
+    translation_file = resolve_path(f"{language}.json")
+
+    with open(translation_file, 'r', encoding='utf-8') as f:
         translations = json.load(f)
     return translations
 
