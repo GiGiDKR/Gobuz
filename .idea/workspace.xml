@@ -5,49 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a629eab-6226-4e08-bd53-d9eb99528ca6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gobuz.spec.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/gobuz.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/.language/en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/.language/fr.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/bundle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/cli.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/color.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/commands.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/core.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/downloader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/metadata.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/qopy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/qobuz-dl-gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qobuz-dl-gui.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qdlgui.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/config.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/.language/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/.language/fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.bak.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gobuz/gobuz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/bundle.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/cli.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/color.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/commands.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/downloader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/metadata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/qopy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
