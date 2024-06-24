@@ -34,8 +34,28 @@ def resolve_path(file_name):
     return resolved_path
 
 
+def load_translation_files(resolved_path):
+    urls = [
+        "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/gobuz/.language/en.json",
+        "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/gobuz/.language/fr.json"
+    ]
+    base_path = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) \
+        else os.path.dirname(os.path.abspath(__file__))
+
+    os.makedirs(os.path.join(base_path, ".language"), exist_ok=True)
+
+    for url in urls:
+        language = url.split('/')[-1].split('.')[0]
+
+        local_path = os.path.join(base_path, ".language", f"{language}.json")
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open(local_path, "wb") as f:
+                f.write(response.content)
+
+
 def update_credentials(resolved_path):
-    url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/.config/config.ini"
+    url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/gobuz/.config/config.ini"
     filename = resolved_path("config.ini")
     r = requests.get(url)
     f = open(filename, 'wb')
@@ -67,7 +87,7 @@ class QobuzDLApp:
         self.results = results
         self.root.title("Qobuz Downloader")
         self.qobuz = QobuzDL()
-
+        load_translation_files(resolved_path)
         self.widgets_to_update = []
         self.translations = load_translation('en')
         self.limit = 20
@@ -96,7 +116,7 @@ class QobuzDLApp:
         self.root.geometry(f'+{xpos}+{ypos}')
 
     def user_update_credentials(self, resolved_path):
-        url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/qobuz_dl/.config/config.ini"
+        url = "https://raw.githubusercontent.com/GiGiDKR/qobuz-dl-gui/main/gobuz/.config/config.ini"
         filename = resolved_path("config.ini")
         r = requests.get(url)
         f = open(filename, 'wb')
