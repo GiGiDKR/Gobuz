@@ -5,11 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a629eab-6226-4e08-bd53-d9eb99528ca6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gobuz.spec.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/gobuz.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/.language/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/.language/fr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/cli.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/color.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/commands.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/core.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/downloader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/metadata.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/qopy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gobuz/qobuz_dl/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/qobuz-dl-gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qobuz-dl-gui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qdlgui.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/config.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/.language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/.language/fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/.config/preferences.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.bak.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qdl-gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gobuz/gobuz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/cli.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/color.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/commands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/core.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/downloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/metadata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/qopy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qobuz_dl/qobuz_dl/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,32 +78,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python tests.Doctests in downloader.executor": "Run",
-    "Python.a.executor": "Run",
-    "Python.gui.executor": "Run",
-    "Python.logger.executor": "Run",
-    "Python.login.executor": "Run",
-    "Python.qdl-gui-copilot.executor": "Run",
-    "Python.qdl-gui.bak.executor": "Run",
-    "Python.qdl-gui.executor": "Run",
-    "Python.qdl.executor": "Run",
-    "Python.qdlttk.executor": "Run",
-    "Python.qdlttk2.executor": "Run",
-    "Python.windows.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Windows/Documents/GitHub/qdlg"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python tests.Doctests in downloader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.a.executor&quot;: &quot;Run&quot;,
+    &quot;Python.core.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gobuz.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.logger.executor&quot;: &quot;Run&quot;,
+    &quot;Python.login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdl-gui-copilot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdl-gui.bak.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdl-gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdl.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdlttk.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qdlttk2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.windows.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Windows/Documents/GitHub/qobuz-dl-gui/gobuz&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\gobuz" />
       <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\qobuz_dl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\qobuz_dl\.language" />
+      <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\qobuz_dl\.config" />
       <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\qobuz_dl\qobuz_dl" />
       <recent name="C:\Users\Windows\Documents\GitHub\qobuz-dl-gui\qobuz_dl" />
     </key>
@@ -119,6 +165,11 @@
               </option>
               <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
             </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>

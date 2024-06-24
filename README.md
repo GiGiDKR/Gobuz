@@ -154,7 +154,7 @@ Using `qobuz-dl` as a module is really easy. Basically, the only thing you need 
 
 ```python
 import logging
-from qobuz_dl.core import QobuzDL
+from gobuz.core import QobuzDL
 
 logging.basicConfig(level=logging.INFO)
 
